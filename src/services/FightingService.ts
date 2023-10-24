@@ -31,15 +31,19 @@ class FightingService implements IFightingService {
     }
   }
 
-  private executeRound(fighter1: Fighter, fighter2: Fighter): void {
+private executeRound(fighter1: Fighter, fighter2: Fighter): void {
     console.log(`${fighter1.name} attacks ${fighter2.name}.`);
-    fighter2.health -= fighter1.power;
+    const damage = fighter1.power;
+    fighter2.health -= damage;
+    console.log(`${fighter2.name} takes ${damage} damage. ${fighter2.name}'s health is now ${fighter2.health}.`);
 
     if (fighter2.health > 0) {
-      console.log(`${fighter2.name} attacks ${fighter1.name}.`);
-      fighter1.health -= fighter2.power;
+        console.log(`${fighter2.name} attacks ${fighter1.name}.`);
+        const damage = fighter2.power;
+        fighter1.health -= damage;
+        console.log(`${fighter1.name} takes ${damage} damage. ${fighter1.name}'s health is now ${fighter1.health}.`);
     }
-  }
+}
 }
 
 export { IFightingService, FightingService };
